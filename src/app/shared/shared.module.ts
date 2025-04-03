@@ -4,10 +4,11 @@ import { MaterialModule } from '../material/material.module';
 import { CommonModule } from '@angular/common';
 import { CommonFilter } from './components/common-filter/common-filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
-  declarations: [Error404PageComponent, CommonFilter],
-  exports: [Error404PageComponent, CommonFilter],
+  declarations: [Error404PageComponent, CommonFilter, ConfirmDialogComponent],
+  exports: [Error404PageComponent, CommonFilter, ConfirmDialogComponent],
   imports: [CommonModule, MaterialModule, ReactiveFormsModule],
 })
 export class SharedModule {}

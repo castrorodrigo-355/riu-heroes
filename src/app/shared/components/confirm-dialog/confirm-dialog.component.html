@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Are you sure you want to remove this hero?</h1>
+<div
+  mat-dialog-actions
+  class="d-flex justify-content-between align-items-center p-3"
+>
+  <button mat-button class="btn btn-secondary" (click)="onNoClick()">
+    Cancel
+  </button>
+  <button
+    mat-button
+    class="btn btn-danger"
+    color="primary"
+    (click)="onConfirm()"
+    [disabled]="data.isLoading | async"
+  >
+    <mat-progress-spinner
+      *ngIf="data.isLoading | async"
+      diameter="20"
+      mode="indeterminate"
+    ></mat-progress-spinner>
+    <span *ngIf="!(data.isLoading | async)">Confirm</span>
+  </button>
+</div>

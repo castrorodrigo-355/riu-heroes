@@ -21,6 +21,8 @@ export class SuperheroesService {
   private heroDetailSubject = new BehaviorSubject<IHero | null>(null);
   private heroDetailLoadingSubject = new BehaviorSubject<boolean>(false);
 
+  private loadingDeleteSubject = new BehaviorSubject<boolean>(false);
+
   heroes$ = this.heroesSubject.asObservable();
   isLoading$ = this.loadingSubject.asObservable();
 
@@ -28,6 +30,8 @@ export class SuperheroesService {
 
   heroDetail$ = this.heroDetailSubject.asObservable();
   heroDetailLoading$ = this.heroDetailLoadingSubject.asObservable();
+
+  isDeleting$ = this.loadingDeleteSubject.asObservable();
 
   constructor() {
     this._loadHeroes();
@@ -67,5 +71,16 @@ export class SuperheroesService {
         this.heroDetailSubject.next(hero);
         this.heroDetailLoadingSubject.next(false);
       });
+  }
+
+  deleteHero(id: string): void {
+    this.loadingDeleteSubject.next(true);
+
+    setTimeout(() => {
+      const currentHeroes = this.heroesSubject.getValue();
+      const updatedHeroes = currentHeroes.filter((hero) => hero.id !== id);
+      this.heroesSubject.next(updatedHeroes);
+      this.loadingDeleteSubject.next(false);
+    }, 1500);
   }
 }
