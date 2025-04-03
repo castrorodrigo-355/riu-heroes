@@ -1,4 +1,19 @@
-<div *ngIf="isLoading$ | async">Cargando héroes...</div>
-<div *ngFor="let hero of heroes$ | async">
-  {{ hero.name }}
+<div class="d-flex justify-content-center pt-3" *ngIf="isLoading$ | async">
+  <mat-progress-spinner
+    diameter="50"
+    mode="indeterminate"
+  ></mat-progress-spinner>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div
+      *ngFor="let hero of heroes$ | async"
+      class="col-12 col-sm-6 col-md-4 col-lg-3"
+    >
+      <heroes-hero-card
+        [hero]="hero"
+        (eventEmitter)="onDeleteHero($event)"
+      ></heroes-hero-card>
+    </div>
+  </div>
 </div>

@@ -18,6 +18,7 @@ export class SuperheroesService {
   private _loadHeroes(): void {
     this.loadingSubject.next(true);
     of([
+      { id: v4(), name: 'Riuman' },
       { id: v4(), name: 'Batman' },
       { id: v4(), name: 'Ironman' },
       { id: v4(), name: 'Superman' },

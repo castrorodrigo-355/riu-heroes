@@ -17,4 +17,8 @@ export class ListPageComponent {
     this.heroes$ = this.superheroesService.heroes$;
     this.isLoading$ = this.superheroesService.isLoading$;
   }
+
+  onDeleteHero(id: string): void {
+    console.log(id);
+  }
 }
