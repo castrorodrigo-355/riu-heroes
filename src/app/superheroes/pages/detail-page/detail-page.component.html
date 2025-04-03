@@ -1,0 +1,30 @@
+<ng-template #divLoading>
+  <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>
+
+<div *ngIf="(hero$ | async) as hero; else divLoading" class="container mt-3">
+  <div class="row g-3">
+    <div class="col-12 col-sm-6">
+      <div class="card">
+        <img [src]="'assets/no-image.png'" [alt]="hero.name" class="card-img-top" />
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Details</h5>
+          <h6 class="card-subtitle text-muted">{{ hero.name }}</h6>
+        </div>
+
+        <div class="card-body">
+          <button class="btn btn-danger" (click)="goBack()">Go Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormPageComponent } from './pages/form-page/form-page.component';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 
 const routes: Routes = [
   {
@@ -12,13 +13,14 @@ const routes: Routes = [
       { path: 'list', component: ListPageComponent },
       { path: 'create-hero', component: FormPageComponent },
       { path: 'edit-hero/:id', component: FormPageComponent },
+      { path: ':id', component: DetailPageComponent },
       { path: '**', redirectTo: 'list' },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SuperheroesRoutingModule { }
+export class SuperheroesRoutingModule {}

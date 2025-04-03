@@ -8,6 +8,8 @@ import { FormPageComponent } from './pages/form-page/form-page.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import { SharedModule } from '../shared/shared.module';
     ListPageComponent,
     FormPageComponent,
     HeroCardComponent,
+    DetailPageComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SuperheroesRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    RouterModule,
   ],
 })
 export class SuperheroesModule {}
