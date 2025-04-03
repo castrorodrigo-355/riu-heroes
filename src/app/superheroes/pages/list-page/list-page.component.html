@@ -1,1 +1,4 @@
-<p>list-page works!</p>
+<div *ngIf="isLoading$ | async">Cargando héroes...</div>
+<div *ngFor="let hero of heroes$ | async">
+  {{ hero.name }}
+</div>
