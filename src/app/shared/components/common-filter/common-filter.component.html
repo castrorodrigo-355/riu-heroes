@@ -1,0 +1,32 @@
+<mat-form-field style="width: 100%">
+  <mat-label>{{ title }}</mat-label>
+  <input
+    matInput
+    type="text"
+    [formControl]="searchInput"
+    (input)="searchTerm()"
+    [matAutocomplete]="auto"
+    [value]="searchInput.value | uppercase"
+  />
+
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let item of suggestedList | async"
+      [value]="item"
+      (click)="onSelectItem(item)"
+    >
+      {{ item[keyLabel] }}
+    </mat-option>
+
+    <mat-option
+      *ngIf="
+        (suggestedList | async)?.length === 0 &&
+        searchInput.value &&
+        searchInput.value.length > 0
+      "
+      value=""
+    >
+      No superheroes with name {{ searchInput.value }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

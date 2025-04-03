@@ -7,6 +7,7 @@ import { ListPageComponent } from './pages/list-page/list-page.component';
 import { FormPageComponent } from './pages/form-page/form-page.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HeroCardComponent } from './components/hero-card/hero-card.component';
     ReactiveFormsModule,
     SuperheroesRoutingModule,
     MaterialModule,
+    SharedModule
   ],
 })
 export class SuperheroesModule {}

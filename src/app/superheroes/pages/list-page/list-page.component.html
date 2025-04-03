@@ -5,6 +5,14 @@
   ></mat-progress-spinner>
 </div>
 <div class="container mt-4">
+  <app-common-filter
+    [title]="'Search heroes'"
+    [keyId]="'id'"
+    [keyLabel]="'name'"
+    [suggestedList]="filteredHeroes$"
+    (searchEmitter)="onSearchHero($event)"
+    (selectEmitter)="onSelectItem($event)"
+  ></app-common-filter>
   <div class="row">
     <div
       *ngFor="let hero of heroes$ | async"

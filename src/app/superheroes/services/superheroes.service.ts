@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, delay, of } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, debounceTime, delay, map, of } from 'rxjs';
 import { IHero } from '../interfaces/hero.interface';
 import { v4 } from 'uuid';
 
@@ -8,8 +8,12 @@ export class SuperheroesService {
   private heroesSubject = new BehaviorSubject<IHero[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
+  private filteredHeroesSubject = new BehaviorSubject<IHero[]>([]);
+
   heroes$ = this.heroesSubject.asObservable();
   isLoading$ = this.loadingSubject.asObservable();
+
+  filteredHeroes$ = this.filteredHeroesSubject.asObservable();
 
   constructor() {
     this._loadHeroes();
@@ -28,5 +32,13 @@ export class SuperheroesService {
         this.heroesSubject.next(heroes);
         this.loadingSubject.next(false);
       });
+  }
+
+  filterHeroes(searchTerm: string): void {
+    const heroes = this.heroesSubject.getValue();
+    const filtered = heroes.filter((hero) =>
+      hero.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    this.filteredHeroesSubject.next(filtered);
   }
 }
